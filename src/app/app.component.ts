@@ -1,6 +1,7 @@
-import { Component, ComponentFactoryResolver, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { loadRemoteModule } from '@angular-architects/module-federation';
+import { RemoteComponentConfig } from './remote-component-config';
+import { LookupService } from './lookup.service';
 
 @Component({
     selector: 'app-root',
@@ -9,30 +10,25 @@ import { loadRemoteModule } from '@angular-architects/module-federation';
 })
 export class AppComponent implements OnInit {
 
-    // @ViewChild('myContainer', { read: ViewContainerRef }) container: ViewContainerRef;
+    configs: RemoteComponentConfig[] = [];
+    configs2: RemoteComponentConfig[] = [];
+    showConfig = false;
 
     constructor(public router: Router,
-                private viewCR: ViewContainerRef,
-                private cfr: ComponentFactoryResolver) { }
+                private lookupService: LookupService,
+                private cd: ChangeDetectorRef) { }
 
     ngOnInit(): void {
-        // const { SurveyTileComponent } = await import('remote1/SurveyTileComponent');
-        // const componentFactory = this.cfr.resolveComponentFactory(SurveyTileComponent);
-        // const { instance } = this.container.createComponent(componentFactory);
+        this.loadConfigs();
+        // this.configs2.push(...this.configs);
     }
 
-    async loadSurveyTileComponent() {
-        const component = await loadRemoteModule({
-            remoteEntry: 'http://localhost:3001/remoteEntry.js',
-            remoteName: 'remote1',
-            exposedModule: './SurveyTileComponent'
-        })
+    async loadConfigs(): Promise<void> {
+        this.configs = await this.lookupService.lookup();
+    }
 
-        // this.viewCR.clear();
-        // const { SurveyTileComponent } = await import('remote1/TileModule');
-        // this.viewCR.createComponent(
-        //     this.cfr.resolveComponentFactory(SurveyTileComponent)
-        // );
+    add(config: RemoteComponentConfig) {
+        this.configs2.push(config);
     }
 
 }

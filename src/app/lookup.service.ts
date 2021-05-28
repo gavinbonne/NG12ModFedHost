@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
-import { PluginOptions } from "./plugin-options";
+import { RemoteComponentConfig } from "./remote-component-config";
 
 @Injectable({ providedIn: 'root' })
 export class LookupService {
-    lookup(): Promise<PluginOptions[]> {
+    lookup(): Promise<RemoteComponentConfig[]> {
         return Promise.resolve([
             {
                 remoteEntry: 'http://localhost:3001/remoteEntry.js',
@@ -11,7 +11,14 @@ export class LookupService {
                 exposedModule: './SurveyTileComponent',
                 displayName: 'SurveyTile',
                 componentName: 'SurveyTileComponent'
+            },
+            {
+                remoteEntry: 'http://localhost:3001/remoteEntry.js',
+                remoteName: 'remote1',
+                exposedModule: './HealthTrackerComponent',
+                displayName: 'HealthTracker',
+                componentName: 'HealthTrackerComponent'
             }
-        ] as PluginOptions[]);
+        ] as RemoteComponentConfig[]);
     }
 }
