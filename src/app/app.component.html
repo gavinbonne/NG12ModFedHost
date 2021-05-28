@@ -1,4 +1,14 @@
 <div class="border-blue p-5">
+    <button class="btn btn-primary" type="button" (click)="router.navigate([''])">Home</button>
+    <button class="btn btn-primary ml-3" type="button" (click)="router.navigate(['tile'])">Show Tile</button>
+    <!-- <button class="btn btn-primary ml-3" type="button" (click)="loadSurveyTileComponent()">Load Survey Tile</button> -->
     <h1>Host</h1>
+
     <router-outlet></router-outlet>
+
+    <div class="row">
+        <div class="offset-4 col-4">
+            <!-- <ng-template #myContainer></ng-template> -->
+        </div>
+    </div>
 </div>
