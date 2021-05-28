@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, Injector, Input, OnChanges, ViewChild, ViewContainerRef } from "@angular/core";
+import { Component, ComponentFactoryResolver, EventEmitter, Injector, Input, OnChanges, OnInit, Output, ViewChild, ViewContainerRef } from "@angular/core";
 import { loadRemoteModule } from "@angular-architects/module-federation-runtime";
 import { RemoteComponentConfig } from "./remote-component-config";
 
@@ -8,7 +8,7 @@ import { RemoteComponentConfig } from "./remote-component-config";
         <ng-container #placeHolder></ng-container>
     `
 })
-export class PluginProxyComponent implements OnChanges {
+export class PluginProxyComponent implements OnInit {
     @ViewChild('placeHolder', { read: ViewContainerRef, static: true })
     viewContainer: ViewContainerRef;
 
@@ -17,14 +17,20 @@ export class PluginProxyComponent implements OnChanges {
 
     @Input() config: RemoteComponentConfig;
 
-    async ngOnChanges() {
+    @Output() onComplete = new EventEmitter();
+
+    ngOnInit() {
+        this.loadComponent();
+    }
+
+    loadComponent() {
         this.viewContainer.clear();
-
-        const component = await loadRemoteModule(this.config)
-            .then(m => m[this.config.componentName]);
-
-        const factory = this.cfr.resolveComponentFactory(component);
-
-        this.viewContainer.createComponent(factory, undefined, this.injector);
+        loadRemoteModule(this.config)
+            .then(m => m[this.config.componentName])
+            .then(c => {
+                const factory = this.cfr.resolveComponentFactory(c);
+                this.viewContainer.createComponent(factory, undefined, this.injector);
+                this.onComplete.emit(true);
+            });
     }
 }

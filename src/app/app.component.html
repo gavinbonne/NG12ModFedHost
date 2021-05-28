@@ -1,24 +1,26 @@
-<div class="border-blue p-5">
-    <button class="btn btn-primary" type="button" (click)="router.navigate([''])">Home</button>
-    <button class="btn btn-primary ml-3" type="button" (click)="router.navigate(['tile'])">Show Tile</button>
-    <button class="btn btn-primary ml-3" type="button" (click)="add(configs[0])">Add Survey Tile</button>
-    <button class="btn btn-primary ml-3" type="button" (click)="add(configs[1])">Add Health Tracker</button>
-    <h1>Host</h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" routerLink="">MFE Library</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <router-outlet></router-outlet>
-
-    <div class="row">
-        <div class="col-3" *ngFor="let c of configs2">
-            <plugin-proxy [config]="c"></plugin-proxy>
-        </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="tile">Tile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="widget">Widget</a>
+            </li>
+        </ul>
     </div>
-    
-    <!-- <div class="row" *ngIf="configs && configs.length > 0">
-        <div class="col-6">
-            <plugin-proxy [config]="configs[0]"></plugin-proxy>
-        </div>
-        <div class="col-6">
-            <plugin-proxy [config]="configs[1]"></plugin-proxy>
-        </div>
-    </div> -->
+</nav>
+
+<div class="border-blue p-5">
+    <h1>Host</h1>
+    <router-outlet></router-outlet>
 </div>
