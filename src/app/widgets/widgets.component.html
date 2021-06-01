@@ -1,0 +1,35 @@
+<div class="p-5">
+    <h1>Static Widgets</h1>
+    
+    <!-- <div class="row">
+        <div class="col-3" *ngFor="let w of widgets; let i = index;">
+            <plugin-proxy [config]="w" (onComplete)="onComplete(i)"></plugin-proxy>
+        </div>
+    </div> -->
+
+    <div class="row mb-3">
+        <div class="col-6">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+        <div class="col-6">
+            <plugin-proxy *ngIf="widgets && widgets[0]" [config]="widgets[0]" (onComplete)="onComplete(0)"></plugin-proxy>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-4">
+            <plugin-proxy *ngIf="widgets && widgets[1]" [config]="widgets[1]" (onComplete)="onComplete(1)"></plugin-proxy>
+        </div>
+        <div class="col-8">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+        <div class="col-4">
+            <plugin-proxy *ngIf="widgets && widgets[2]" [config]="widgets[2]" (onComplete)="onComplete(2)"></plugin-proxy>
+        </div>
+        <div class="col-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
+    </div>
+</div>

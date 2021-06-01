@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { WidgetComponent } from './widget/widget.component';
+import { HomeComponent } from './home/home.component';
+import { TilesComponent } from './tiles/tiles.component';
+import { WidgetsComponent } from './widgets/widgets.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: 'tile', pathMatch: 'full' },
-    { path: 'widget', component: WidgetComponent, pathMatch: 'full' },
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: 'home', component: HomeComponent, pathMatch: 'full' },
     {
-        path: 'tile',
-        loadChildren: () => import('remote1/TileModule').then(m => m.TileModule)
+        path: 'billing',
+        loadChildren: () => import('remote1/BillingModule').then(m => m.BillingModule)
     },
+    { path: 'tiles', component: TilesComponent, pathMatch: 'full' },
+    { path: 'widgets', component: WidgetsComponent, pathMatch: 'full' },
+    { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
 
 @NgModule({

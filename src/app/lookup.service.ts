@@ -8,6 +8,13 @@ export class LookupService {
             {
                 remoteEntry: 'http://localhost:3001/remoteEntry.js',
                 remoteName: 'remote1',
+                exposedModule: './ArticleTileComponent',
+                displayName: 'ArticleTile',
+                componentName: 'ArticleTileComponent'
+            },
+            {
+                remoteEntry: 'http://localhost:3001/remoteEntry.js',
+                remoteName: 'remote1',
                 exposedModule: './SurveyTileComponent',
                 displayName: 'SurveyTile',
                 componentName: 'SurveyTileComponent'
