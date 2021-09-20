@@ -3,22 +3,24 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PluginProxyComponent } from './plugin-proxy.component';
-import { TilesComponent } from './tiles/tiles.component';
+import { DynamicComponent } from './dynamic/dynamic.component';
 import { HomeComponent } from './home/home.component';
-import { WidgetsComponent } from './widgets/widgets.component';
+import { PluginProxyComponent } from './shared/components/plugin-proxy.component';
+import { StaticComponent } from './static/static.component';
+import { WebComponentLoaderComponent } from './shared/components/web-component-loader.component';
 
 @NgModule({
     declarations: [
         AppComponent,
+        DynamicComponent,
         PluginProxyComponent,
-        TilesComponent,
         HomeComponent,
-        WidgetsComponent
+        StaticComponent,
+        WebComponentLoaderComponent
     ],
     imports: [
-        BrowserModule,
-        AppRoutingModule
+        AppRoutingModule,
+        BrowserModule
     ],
     providers: [],
     bootstrap: [AppComponent]

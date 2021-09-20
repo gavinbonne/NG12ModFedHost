@@ -24,6 +24,7 @@ module.exports = {
         new ModuleFederationPlugin({
             remotes: {
                 "remote1": "remote1@http://localhost:3001/remoteEntry.js",
+                "reactMfeSandbox": "reactMfeSandbox@http://localhost:3002/remoteEntry.js"
             },
             shared: {
                 "@angular/core": { singleton: true, strictVersion: true },

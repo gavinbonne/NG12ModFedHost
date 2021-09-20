@@ -1,6 +1,6 @@
-import { Component, ComponentFactoryResolver, EventEmitter, Injector, Input, OnChanges, OnInit, Output, ViewChild, ViewContainerRef } from "@angular/core";
+import { Component, ComponentFactoryResolver, EventEmitter, Injector, Input, OnInit, Output, ViewChild, ViewContainerRef } from "@angular/core";
 import { loadRemoteModule } from "@angular-architects/module-federation-runtime";
-import { RemoteComponentConfig } from "./remote-component-config";
+import { RemoteComponentConfig } from "../entities/remote-component-config";
 
 @Component({
     selector: 'plugin-proxy',

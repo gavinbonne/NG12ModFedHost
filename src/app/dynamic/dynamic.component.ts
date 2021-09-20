@@ -1,18 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { LookupService } from '../lookup.service';
-import { RemoteComponentConfig } from '../remote-component-config';
+import { LookupService } from '../shared/services/lookup.service';
+import { RemoteComponentConfig } from '../shared/entities/remote-component-config';
+import { RegistryItem } from '../shared/entities/web-component-registry';
 
 @Component({
-    selector: 'app-tiles',
-    templateUrl: './tiles.component.html',
-    styleUrls: ['./tiles.component.scss']
+    selector: 'app-dynamic',
+    templateUrl: './dynamic.component.html',
+    styleUrls: ['./dynamic.component.scss']
 })
-export class TilesComponent implements OnInit {
+export class DynamicComponent implements OnInit {
 
     configs: RemoteComponentConfig[] = [];
     configs2: RemoteComponentConfig[] = [];
     synchronizer: Subject<RemoteComponentConfig> = new Subject();
+    reactMfeList: string[] = [];
+    readonly RegistryItem = RegistryItem;
 
     constructor(private lookupService: LookupService) { }
 

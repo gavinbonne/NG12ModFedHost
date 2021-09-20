@@ -1,19 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { LookupService } from '../lookup.service';
-import { RemoteComponentConfig } from '../remote-component-config';
+import { LookupService } from '../shared/services/lookup.service';
+import { RemoteComponentConfig } from '../shared/entities/remote-component-config';
+import { RegistryItem } from '../shared/entities/web-component-registry';
 
 @Component({
-    selector: 'app-widgets',
-    templateUrl: './widgets.component.html',
-    styleUrls: ['./widgets.component.scss']
+    selector: 'app-static',
+    templateUrl: './static.component.html',
+    styleUrls: ['./static.component.scss']
 })
-export class WidgetsComponent implements OnInit {
+export class StaticComponent implements OnInit {
 
     configs: RemoteComponentConfig[] = [];
     synchronizer: Subject<RemoteComponentConfig> = new Subject();
     widgets: RemoteComponentConfig[] = [];
     widgetsToLoad: RemoteComponentConfig[] = [];
+    readonly RegistryItem = RegistryItem;
 
     constructor(private lookupService: LookupService) { }
 
@@ -21,9 +23,9 @@ export class WidgetsComponent implements OnInit {
         this.loadConfigs()
             .then(() => {
                 this.widgetsToLoad = [
-                    this.configs[2],
-                    this.configs[2],
-                    this.configs[2]
+                    this.configs[1],
+                    this.configs[1],
+                    this.configs[1]
                 ];
 
                 /**

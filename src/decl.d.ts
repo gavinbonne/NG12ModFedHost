@@ -1,1 +1,1 @@
-declare module 'remote1/BillingModule';
+declare module 'remote1/ParentModule';
