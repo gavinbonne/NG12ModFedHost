@@ -1,0 +1,9 @@
+<div class="p-5">
+    <h1>Input/Output</h1>
+
+    <label class="font-weight-bold">Say Hello</label>
+    <input type="text" [ngModel]="sayHello" (ngModelChange)="sayHelloChange($event)">
+    <!--  (ngModelChange)="sayHelloChange($event)" -->
+    <!-- <div #parentElementRef></div> -->
+    <react-mfe-input-output *ngIf="reactMFELoaded" [attr.sayHello]="sayHello"></react-mfe-input-output>
+</div>
