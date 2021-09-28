@@ -1,5 +1,5 @@
 import { AfterContentInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { WebComponentRegistry, RegistryItem } from '../entities/web-component-registry';
 
 @Component({
@@ -23,7 +23,8 @@ export class WebComponentLoaderComponent implements AfterContentInit {
     @ViewChild('parentElementRef', { read: ElementRef, static: true })
     parentElementRef: ElementRef;
 
-    constructor(private route: ActivatedRoute) { }
+    constructor(private route: ActivatedRoute,
+                private router: Router) { }
 
     ngAfterContentInit(): void {
         const elementName: string = this.elementName ? this.elementName : this.route.snapshot.data['elementName'];
@@ -41,6 +42,13 @@ export class WebComponentLoaderComponent implements AfterContentInit {
         this.childClasses.forEach((c: string) => {
             element.classList.add(c);
         });
+
+        this.router.events.forEach((event) => {
+            if (event instanceof NavigationEnd) {
+                element.setAttribute('updated_url', event.url);
+            }
+        });
+
         this.parentElementRef.nativeElement.appendChild(element);
     }
 }

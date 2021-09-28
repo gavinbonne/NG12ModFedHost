@@ -9,6 +9,10 @@ export class InputOutputComponent implements OnInit {
 
     reactMFELoaded: boolean = false;
     sayHello: string = 'Hello, Gavin!';
+    option1 = { color: 'Green' };
+    option2 = { color: 'Blue' };
+    selectedOption = this.option1;
+    readonly JSON = JSON;
 
     constructor() { }
 
@@ -16,16 +20,16 @@ export class InputOutputComponent implements OnInit {
         this.loadReactMFE();
     }
 
-    sayHelloChange(value: string) {
-        console.log('sayHello: ', value);
-    }
-
     async loadReactMFE() {
         await import('reactMfeSandbox/reactMfeInputOutput');
         this.reactMFELoaded = true;
-        // const element = document.createElement('react-mfe-tile');
-        // element.setAttribute('sayHello', this.sayHello)
-        // this.parentElementRef.nativeElement.appendChild(element);
     }
 
+    toggleSelectedOption() {
+        if (this.selectedOption.color === 'Green') {
+            this.selectedOption = this.option2;
+        } else {
+            this.selectedOption = this.option1;
+        }
+    }
 }

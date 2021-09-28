@@ -1,9 +1,18 @@
 <div class="p-5">
     <h1>Input/Output</h1>
 
-    <label class="font-weight-bold">Say Hello</label>
-    <input type="text" [ngModel]="sayHello" (ngModelChange)="sayHelloChange($event)">
-    <!--  (ngModelChange)="sayHelloChange($event)" -->
-    <!-- <div #parentElementRef></div> -->
-    <react-mfe-input-output *ngIf="reactMFELoaded" [attr.sayHello]="sayHello"></react-mfe-input-output>
+    <div class="mb-3">
+        <label class="font-weight-bold">Say Hello</label>
+        <input type="text" [(ngModel)]="sayHello">
+    </div>
+
+    <div class="mb-3">
+        <button class="btn btn-primary" (click)="toggleSelectedOption()">Toggle Option</button>
+        <pre>{{selectedOption | json}}</pre>
+    </div>
+
+    <react-mfe-input-output
+        *ngIf="reactMFELoaded"
+        [attr.say_hello]="sayHello"
+        [attr.selected_option]="JSON.stringify(selectedOption)"></react-mfe-input-output>
 </div>
