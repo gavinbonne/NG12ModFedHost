@@ -7,12 +7,24 @@
     </div>
 
     <div class="mb-3">
+        <button class="btn" [class]="redAlert ? 'btn-success' : 'btn-danger'" (click)="redAlert = !redAlert">{{redAlert ? 'Cancel Red Alert' : 'Red Alert!'}}</button>
+    </div>
+
+    <div class="mb-3">
         <button class="btn btn-primary" (click)="toggleSelectedOption()">Toggle Option</button>
         <pre>{{selectedOption | json}}</pre>
     </div>
 
+    <div class="mb-3">
+        <button type="button" class="btn btn-primary">
+            Count <span class="badge badge-light">{{counter}}</span>
+        </button>
+    </div>
+
     <react-mfe-input-output
-        *ngIf="reactMFELoaded"
+        #reactMfeRef
+        [attr.red_alert]="redAlert"
         [attr.say_hello]="sayHello"
-        [attr.selected_option]="JSON.stringify(selectedOption)"></react-mfe-input-output>
+        [attr.selected_option]="JSON.stringify(selectedOption)"
+        when_counter_incremented></react-mfe-input-output>
 </div>
